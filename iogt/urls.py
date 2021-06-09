@@ -6,6 +6,7 @@ from search import views as search_views
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from home import views as pwa_views
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -16,6 +17,12 @@ urlpatterns = [
     path('search/', search_views.search, name='search'),
     path('users/', include(users_urls), name='users_urls'),
     path('accounts/', include('allauth.urls'), name='allauth-urls'),
+     path(
+        'sw.js',
+        pwa_views.ServiceWorkerView.as_view(),
+        name=pwa_views.ServiceWorkerView.name,
+    ),
+    path('test/', pwa_views.test, name='test'),
 ]
 
 if settings.DEBUG:

@@ -43,6 +43,14 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/iogt.js' %}"></script>
+    
+        <script>
+        if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register("{% url 'sw.js' %}");
+        });
+        }
+        </script>
         {% block extra_js %}{% endblock %}
 
     </body>
