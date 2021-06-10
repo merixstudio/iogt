@@ -41,9 +41,7 @@
             </div>
         </div>
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/iogt.js' %}"></script>
-    
+        {# Global javascript #}    
         <script>
         if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -51,6 +49,9 @@
         });
         }
         </script>
+
+        <script src="{% static 'js/app.js' %}"> </script> 
+
         {% block extra_js %}{% endblock %}
 
     </body>
