@@ -43,15 +43,11 @@
 
         {# Global javascript #}    
         <script>
-        if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register("{% url 'sw.js' %}");
-        });
-        }
-        </script>
-
-        <script src="{% static 'js/app.js' %}"> </script> 
-
+        function cache() {
+           if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' })
+       }}  
+       </script>
         {% block extra_js %}{% endblock %}
 
     </body>
