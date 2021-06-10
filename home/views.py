@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import TemplateView
 
+class TestView(TemplateView):
+    template_name = "home/test.html"
 
-def test(request, id=None):
-    return render(request, '../home/templates/home/test.html', context={'id': id})
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context["id"] = "lorem ipsum"
+        return context
+        
 class ServiceWorkerView(TemplateView):
     template_name = 'sw.js'
     content_type = 'application/javascript'
